@@ -16,12 +16,17 @@ export class AuthServiceClass {
   //But if we do not want the Appwrite dependency, and connect to any DB we want, we need to write some custom CRUD
   async createAccount({ email, password, name }) {
     try {
-      const userAccount = await this.account.create(ID.unique(), email, password, name); //ID.unique() appwrite builtin function to generate unique IDs,
+      const userAccount = await this.account.create(
+        ID.unique(),
+        email,
+        password,
+        name
+      ); //ID.unique() appwrite builtin function to generate unique IDs,
       //you need to pass ID as first parameter for create operation in appwrite
-      if(userAccount){
+      if (userAccount) {
         //call another method like login or redicrect to some page
-       return this.login({email, password})
-      }else{
+        return this.login({ email, password });
+      } else {
         return userAccount;
       }
     } catch (error) {
@@ -29,29 +34,28 @@ export class AuthServiceClass {
     }
   }
 
-  async login({email, password}){
+  async login({ email, password }) {
     try {
-       return await this.account.createEmailSession(email, password);
+      return await this.account.createEmailSession(email, password);
     } catch (error) {
-        throw error;
+      throw error;
     }
-  } 
+  }
 
-  async getCurrentUser(){
+  async getCurrentUser() {
     try {
       return await this.account.get();
     } catch (error) {
-        console.log("Appwrite service :: getCurrentUser :: error", error);
+      console.log("Appwrite service :: getCurrentUser :: error", error);
     }
-
     return null;
   }
 
-  async logout(){
+  async logout() {
     try {
-        await this.account.deleteSessions();
+      await this.account.deleteSessions();
     } catch (error) {
-        throw error;
+      throw error;
     }
   }
 }
