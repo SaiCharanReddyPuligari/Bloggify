@@ -24,16 +24,17 @@ function App() {
   }, []);
 
   return !loading ? (
-  <div className=" bg-green-600 min-h-screen flex flex-wrap content-between">Hello Bloggers
-  <div className="w-full block">
-  <Header/>
-  {/* <main>
+    <div className=" bg-green-600 min-h-screen flex flex-wrap content-between">
+      <div className="w-screen block">
+        Hello guys
+        <Header />
+        {/* <main>
     <Outlet/>
   </main> */}
-  <Footer/>
-  </div>
-  </div>
-   ) : null; //conditional
+        <Footer />
+      </div>
+    </div>
+  ) : null; //conditional
 }
 
 export default App;
