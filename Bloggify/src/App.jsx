@@ -28,9 +28,9 @@ function App() {
       <div className="w-screen block">
         Hello guys
         <Header />
-        {/* <main>
-    <Outlet/>
-  </main> */}
+        <main>
+          <Outlet />
+        </main>
         <Footer />
       </div>
     </div>
