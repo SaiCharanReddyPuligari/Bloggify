@@ -16,6 +16,7 @@ export class Service {
 
   async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
+      //console.log(title, slug, content, featuredImage, status, userId);
       return await this.databases.createDocument(
         config.appwriteDatabaseId,
         config.appwriteCollectionId,
@@ -29,13 +30,13 @@ export class Service {
         }
       );
     } catch (error) {
-      throw error;
+      console.log("Appwrite serive :: createPost :: error", error);
     }
   }
 
   async updatePost(slug, { title, content, featuredImage, status }) {
     try {
-      return await thid.databases.updateDocument(
+      return await this.databases.updateDocument(
         config.appwriteDatabaseId,
         config.appwriteCollectionId,
         slug,
@@ -50,6 +51,7 @@ export class Service {
       throw error;
     }
   }
+
   async deletePost(slug) {
     try {
       await this.databases.deleteDocument(
@@ -66,7 +68,7 @@ export class Service {
 
   async getDocumentById(slug) {
     try {
-      return await databases.getDocument(
+      return await this.databases.getDocument(
         config.appwriteDatabaseId,
         config.appwriteCollectionId,
         slug
@@ -77,59 +79,54 @@ export class Service {
     }
   }
 
-  async getPosts(queries = [Query.equal("status", "active")]){ //we are fetching blogs from dataase which are active in status using queries// similar to pipelining in MongoDB
-  //you can only use Queries, if you have created indexes, we did for status
-  try {
-    return await this.databases.listDocuments(
-        config.appwriteDatabaseIdl,
+  async getPosts(queries = [Query.equal("status", "active")]) {
+    //we are fetching blogs from dataase which are active in status using queries// similar to pipelining in MongoDB
+    //you can only use Queries, if you have created indexes, we did for status
+    try {
+      return await this.databases.listDocuments(
+        config.appwriteDatabaseId,
         config.appwriteCollectionId,
-        queries,
+        queries
         // [//write queries directly in the array
         //     Query.equal("status", "active")
         // ]
         //you can also give pagination here
-    )
-  } catch (error) {
-    console.log("Appwrite Service :: Unable to fetch the Documents", error);
-      return false;
-  }
-  }
-
-  //file uploading
-  async uploadFile(file){
-    try {
-        const promise = this.bucket.createFile(
-            config.appwriteBucketId,
-            ID.unique(), //from ID
-            file,
-        );
+      );
     } catch (error) {
-      console.log("Appwrite Service :: Unable to upload the file", error);
+      console.log("Appwrite Service :: Unable to fetch the Documents", error);
       return false;
     }
   }
 
-  async deleteFile(fileId){
-try {
-    await this.bucket.deleteFile(
+  //file uploading
+  async uploadFile(file) {
+    try {
+      return await this.bucket.createFile(
         config.appwriteBucketId,
-        fileId,
-    )
-} catch (error) {
-    console.log("Appwrite Service :: Unable to delete the file", error);
+        ID.unique(),
+        file
+      );
+    } catch (error) {
+      console.log("Appwrite serive :: uploadFile :: error", error);
       return false;
-}
+    }
   }
 
-  getFilePreview(fileId){
-    return this.bucket.getFilePreview(
-        config.appwriteBucketId,
-        fileId
-    )
+  async deleteFile(fileId) {
+    try {
+      await this.bucket.deleteFile(config.appwriteBucketId, fileId);
+    } catch (error) {
+      console.log("Appwrite Service :: Unable to delete the file", error);
+      return false;
+    }
+  }
+
+  getFilePreview(fileId) {
+    console.log(fileId);
+    return this.bucket.getFilePreview(config.appwriteBucketId, fileId);
   }
 }
 
 const service = new Service();
-
 
 export default service;

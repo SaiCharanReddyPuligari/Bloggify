@@ -20,15 +20,16 @@ function App() {
           dispatch(logout());
         }
       })
+      .catch((error) => console.log(error))
       .finally(() => setLoading(false)); //if no data is available
   }, []);
-
+  //
   return !loading ? (
-    <div className=" bg-green-600 min-h-screen flex flex-wrap content-between">
-      <div className="w-screen block">
-        Hello guys
+    <div className="min-h-screen flex flex-wrap content-between bg-[#f9fafb]">
+      <div className="w-full block">
+        <div className="text-white font-bold">Welcome to Bloggify</div>
         <Header />
-        <main>
+        <main className="bg-background">
           <Outlet />
         </main>
         <Footer />

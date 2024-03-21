@@ -11,7 +11,7 @@ function EditPost(){
 
     useEffect(()=>{
         if(slug){
-            appwriteService.getPosts(slug)
+            appwriteService.getDocumentById(slug)
                            .then((post)=>{
                             if(post){
                                 setPosts(post)
