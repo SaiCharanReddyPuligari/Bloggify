@@ -18,6 +18,7 @@ function App() {
           dispatch(login({ userData }));
         } else {
           dispatch(logout());
+          //console.log("1", logout());
         }
       })
       .catch((error) => console.log(error))
@@ -25,11 +26,10 @@ function App() {
   }, []);
   //
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-[#f9fafb]">
-      <div className="w-full block">
-        <div className="text-white font-bold">Welcome to Bloggify</div>
+    <div className="w-full min-h-screenflex flex-wrap content-between bg-[#f9fafb]">
+      <div className="w-full block">       
         <Header />
-        <main className="bg-background">
+        <main className="w-full bg-background">
           <Outlet />
         </main>
         <Footer />

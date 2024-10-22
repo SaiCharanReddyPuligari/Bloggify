@@ -62,7 +62,7 @@ export default function PostForm({ post }) {
             ...data,
             userId: userData.$id,
           });
-          //console.log("1",dbPost);
+          console.log("1", dbPost);
           if (dbPost) {
             navigate(`/post/${dbPost.$id}`);
           }
@@ -98,13 +98,13 @@ export default function PostForm({ post }) {
         <Input
           label="Title :"
           placeholder="Title"
-          className="mb-4 w-full hover:bg-slate-300"
+          className="mb-4 w-full "
           {...register("title", { required: true })}
         />
         <Input
           label="Slug :"
           placeholder="Slug"
-          className="mb-4 w-full hover:bg-slate-300"
+          className="mb-4 w-full"
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
@@ -123,7 +123,7 @@ export default function PostForm({ post }) {
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4 w-full hover:bg-slate-300"
+          className="mb-4 w-full "
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
@@ -139,13 +139,13 @@ export default function PostForm({ post }) {
         <Select
           options={["active", "inactive"]}
           label="Status"
-          className="mb-4 w-full hover:bg-slate-300"
+          className="mb-4 w-full "
           {...register("status", { required: true })}
         />
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
-          className="w-full hover:bg-blue-300 hover:text-black"
+          className="w-full hover:bg-[#3b0764] hover:text-white"
         >
           {post ? "Update" : "Submit"}
         </Button>

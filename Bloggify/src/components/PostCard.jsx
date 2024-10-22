@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 
 function PostCard(post) {
   //const {$id, title, featuredImage} = post;
-  const date = new Date(post.$createdAt).toLocaleDateString('en-US')
+  const date = new Date(post.$createdAt).toLocaleDateString("en-US");
   return (
     <Link to={`/post/${post.$id}`}>
-      <div className="w-full bg-gray-100 rounded-xl px-4">
+      <div className="w-full bg-gray-100 rounded-xl px-4 py-4 hover:shadow-lg">
         <div className="w-full justify-center mb-3">
           <img
             src={service.getFilePreview(post.featuredImage)}
@@ -18,7 +18,7 @@ function PostCard(post) {
           />
         </div>
         <h2 className="text-xl font-bold">{post.title}</h2>
-        <p className="text-sm">{date}</p>
+        <p>{date}</p>
       </div>
     </Link>
   );

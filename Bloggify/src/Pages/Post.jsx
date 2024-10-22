@@ -35,6 +35,8 @@ export default function Post() {
       }
     });
   };
+  //        <span class="fold-bold relative inline-block h-full w-full rounded border-2 border-black bg-white px-3 py-1 text-base font-bold text-black transition duration-100 hover:bg-yellow-400 hover:text-gray-900 dark:bg-transparent">elevated button</span>
+
 
   return post ? (
     <div className="py-8">
@@ -44,10 +46,9 @@ export default function Post() {
             src={service.getFilePreview(post.featuredImage)}
             alt={post.title}
             className="rounded-xl"
-          />
-
+          /> {""}
           {isAuthor && (
-            <div className="absolute right-6 top-6">
+            <div className=" absolute flex right-4 top-12">
               <Link to={`/edit-post/${post.$id}`}>
                 <Button bgColor="bg-green-500" className="mr-3">
                   Edit
