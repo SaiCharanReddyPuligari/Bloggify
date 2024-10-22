@@ -29,15 +29,15 @@ function Login() {
   return (
     <div className="flex items-center justify-center w-full">
       <div
-        className={`mx-auto w-full max-w-lg bg-gradient-to-r from-yellow-300 to-green-300 text-black rounded-xl p-10 border border-black/10`}
+        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
       >
         <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
             <Logo width="100%" />
           </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">
-          sign in to your account
+        <h2 className="text-center text-2xl font-bold">
+          Login to your account
         </h2>
         <p className="mt-2 text-center text-base text-black/60">
           Don&apos;t have an account?&nbsp;
@@ -48,7 +48,7 @@ function Login() {
             Sign Up
           </Link>
         </p>
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+        {error && <p className="text-red-600 font-bold mt-8 text-center">{error}</p>}
         <form onSubmit={handleSubmit(login)} className="mt-8">
           <div className="space-y-5">
             <Input
@@ -72,8 +72,11 @@ function Login() {
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full">
-              Sign In
+            <Button 
+              bgColor="bg-primary"
+              type="submit" 
+              className="w-full hover:bg-text hover:text-background">
+              Login
             </Button>
           </div>
         </form>

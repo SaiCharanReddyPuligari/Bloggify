@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Logo, LogoutBtn } from "../index";
-import { Link } from "react-router-dom";
+import { Container, Logo, LogoutButton } from "../index";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -37,33 +37,35 @@ function Header() {
   ];
   //bg-[#3b0764]
   return (
-    <header className="w-full py-3 bg-gradient-to-r from-yellow-500 to-green-500 shadow text-white font-bold">
+    <header className="sm:py-3 py-2 shadow-lg bg-background sticky top-0 z-10">
       <Container>
-        <nav className="flex">
-          <div className="mr-4">
+        <nav className="flex flex-wrap items-center justify-center">
+          <div className="sm:mr-4 w-14">
             <Link to="/">
               <Logo width="70px" />
             </Link>
           </div>
-          <ul className="flex ml-auto">
+          <div className="ml-auto flex items-center justify-between">
+          <ul className="flex sm:space-x-7 space-x-3 md:mr-2">
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>
-                  <button
-                    onClick={() => navigate(item.slug)}
-                    className="inline-bock px-6 py-2 duration-200 bg-white text-black hover:bg-gradient-to-r from-yellow-200 to-green-200 rounded-xl m-2 shadow-lg"
-                  >
-                    {item.name}
-                  </button>
+                  <NavLink to={item.slug} 
+                        className={({isActive}) => `${isActive ? "text-primary": "text-text"} hover:text-primary `} 
+                        onClick={() => navigate(item.slug)}
+                    >
+                        {item.name}
+                    </NavLink>
                 </li>
               ) : null
             )}
             {authStatus && (
               <li className="mt-2">
-                <LogoutBtn />
+                <LogoutButton />
               </li>
             )}
           </ul>
+          </div>
         </nav>
       </Container>
     </header>

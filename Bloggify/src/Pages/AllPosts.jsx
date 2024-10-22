@@ -17,12 +17,20 @@ function AllPosts() {
         console.log("Failed to get all posts from appwrite", error)
       );
   }, []);
+
+  if (posts.length == 0) {
+    return (
+        <div className='h-[70vh] flex justify-center items-center'>
+            <Skeleton />
+        </div>
+    )
+    };
   return (
-    <div className="w-full min-h-screen py-5 px-5">
+    <div className='w-full py-8 md:pt-10'>
       <Container>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center">
           {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
+            <div key={post.$id} className='p-2 hover:scale-95 transition-all duration-200'>
               <PostCard {...post} />
             </div>
           ))}

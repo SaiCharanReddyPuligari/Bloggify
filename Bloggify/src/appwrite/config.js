@@ -48,6 +48,7 @@ export class Service {
         }
       );
     } catch (error) {
+      console.log("Appwrite Service :: updatePost :: error", error);
       throw error;
     }
   }
@@ -61,7 +62,7 @@ export class Service {
       );
       return true;
     } catch (error) {
-      console.log("Appwrite Service :: deletePosy :: error", error);
+      console.log("Appwrite Service :: deletePost :: error", error);
       return false;
     }
   }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import appwriteService from "../appwrite/config";
-import { Container, PostCard } from "../components";
+import { Container, PostCard, Skeleton } from "../components";
 import { Link } from "react-router-dom";
 import { Button } from "../components/index.js";
 import { useSelector } from "react-redux";
@@ -19,21 +19,19 @@ function Home() {
 
   if (posts.length === 0 && !authStatus) {
     return (
-      <div className="w-full min-h-screen py-8 mt-4 text-center">
+      <div className="w-full py-8 mt-4 text-center">
         <Container>
           <div className="min-h-[50vh] flex flex-wrap">
             <div className="p-2 w-full">
               <h1 className="text-2xl font-bold mb-4 font-mono ">
                 SignUp / Login to read posts
               </h1>
-              <div className="flex flex-col gap-6 bg-cyan-500 rounded-xl w-full">
-                <div>
+              <div className="flex flex-col gap-6">
                   <Link to="/signup">
                     <Button bgColor="bg-primary" className="m-4">
                       Signup
                     </Button>
                   </Link>
-                </div>
                 <Link to="/login">
                   <Button bgColor="bg-primary">Login</Button>
                 </Link>
@@ -44,6 +42,13 @@ function Home() {
       </div>
     );
   }
+  if (posts.length === 0 && authStatus) {
+    return (
+        <div className='h-[70vh] flex justify-center items-center'>
+            <Skeleton />
+        </div>
+    )
+}
   return (
     <div className="w-full min-h-screen py-8">
       <Container>
