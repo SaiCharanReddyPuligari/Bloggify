@@ -32,7 +32,7 @@ export default function PostForm({ post }) {
   const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
-    // console.log(data);
+  //console.log(data);
     if (post) {
       const file = data.image[0]
         ? await service.uploadFile(data.image[0])
@@ -98,13 +98,13 @@ export default function PostForm({ post }) {
         <Input
           label="Title :"
           placeholder="Title"
-          className="mb-4"
+          className="mb-4 w-full"
           {...register("title", { required: true })}
         />
         <Input
           label="Slug :"
           placeholder="Slug"
-          className="mb-4"
+          className=" w-full mb-4"
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
@@ -117,13 +117,14 @@ export default function PostForm({ post }) {
           name="content"
           control={control}
           defaultValue={getValues("content")}
+          className="min-h-[300px]"
         />
       </div>
-      <div className="sm:w-1/3 px-2">
+      <div className="sm:w-1/3 px-2 space-y-5">
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4"
+          className="mb-4 w-full"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
@@ -137,9 +138,9 @@ export default function PostForm({ post }) {
           </div>
         )}
         <Select
-          options={["active", "inactive"]}
+          options={["Active", "Inactive"]}
           label="Status"
-          className="mb-4 "
+          className="mb-4"
           {...register("status", { required: true })}
         />
         <Button

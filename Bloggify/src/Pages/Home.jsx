@@ -28,12 +28,12 @@ function Home() {
               </h1>
               <div className="flex flex-col gap-6">
                   <Link to="/signup">
-                    <Button bgColor="bg-primary" className="m-4">
+                    <Button bgColor="bg-primary" className="m-4 bg-black">
                       Signup
                     </Button>
                   </Link>
                 <Link to="/login">
-                  <Button bgColor="bg-primary">Login</Button>
+                  <Button bgColor="bg-primary" className="m-4 bg-black">Login</Button>
                 </Link>
               </div>
             </div>
@@ -50,11 +50,11 @@ function Home() {
     )
 }
   return (
-    <div className="w-full min-h-screen py-8">
+    <div className="w-full py-8 md:pt-10">
       <Container>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap -mx-2">
           {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
+            <div key={post.$id} className="w-full sm:w-1/2 lg:w-1/3 p-2 hover:scale-95 transition-all duration-200">
               <PostCard {...post} />
             </div>
           ))}

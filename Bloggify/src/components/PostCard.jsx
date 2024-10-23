@@ -9,7 +9,7 @@ function PostCard(post) {
   const date = new Date(post.$createdAt).toLocaleDateString("en-US");
   return (
     <Link to={`/post/${post.$id}`}>
-      <div className="w-full bg-gray-100 rounded-xl px-4 py-4 hover:shadow-lg">
+      <div className="w-full bg-[#95B4cc] rounded-xl px-4 py-4 hover:shadow-lg">
         <div className="w-full justify-center mb-3">
           <img
             src={service.getFilePreview(post.featuredImage)}

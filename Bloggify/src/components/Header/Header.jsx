@@ -42,7 +42,7 @@ function Header() {
         <nav className="flex flex-wrap items-center justify-center">
           <div className="sm:mr-4 w-14">
             <Link to="/">
-              <Logo width="70px" />
+              <Logo width="100px" />
             </Link>
           </div>
           <div className="ml-auto flex items-center justify-between">
@@ -59,12 +59,13 @@ function Header() {
                 </li>
               ) : null
             )}
+            </ul>
             {authStatus && (
-              <li className="mt-2">
+              <li className="list-none rounded-full text-text md:hover:bg-accent hover:text-background">
                 <LogoutButton />
               </li>
             )}
-          </ul>
+          
           </div>
         </nav>
       </Container>

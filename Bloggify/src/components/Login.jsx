@@ -75,7 +75,7 @@ function Login() {
             <Button 
               bgColor="bg-primary"
               type="submit" 
-              className="w-full hover:bg-text hover:text-background">
+              className="w-full bg-black">
               Login
             </Button>
           </div>

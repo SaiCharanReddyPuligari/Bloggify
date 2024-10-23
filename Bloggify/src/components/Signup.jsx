@@ -52,9 +52,9 @@ function Signup() {
         <form onSubmit={handleSubmit(create)}>
           <div className="space-y-5">
             <Input
-              label="fullName:"
+              label="FullName:"
               placeholder="Enter your fulName"
-              type="Full Name"
+              type="full Name"
               {...register("fullName", {
                 required: true,
               })}
@@ -80,7 +80,7 @@ function Signup() {
                 required: true,
               })}
             />
-            <Button  bgColor="bg-primary" type="submit" className="w-full">
+            <Button  bgColor="bg-primary" type="submit" className="w-full bg-black">
               SignUp
             </Button>
           </div>
